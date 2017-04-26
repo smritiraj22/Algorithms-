@@ -8,8 +8,20 @@ public class CircularSinglyLinkedList {
     private Node head = null;
     private Node tail = null;
     private int listCount = 0;
+    
+    public Node getHead() {
+		return head;
+	}
 
-    public CircularSinglyLinkedList() {
+	public Node getTail() {
+		return tail;
+	}
+
+	public int getListCount() {
+		return listCount;
+	}
+
+	public CircularSinglyLinkedList() {
     }
 
     public static void main(String[] args) {

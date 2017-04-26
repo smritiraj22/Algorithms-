@@ -9,7 +9,15 @@ public class SinglyLinkedList {
     private Node head = null;
     private int listCount = 0;
 
-    public SinglyLinkedList() {
+    public Node getHead() {
+		return head;
+	}
+
+	public int getListCount() {
+		return listCount;
+	}
+
+	public SinglyLinkedList() {
     }
 
     public static void main(String[] args) {
