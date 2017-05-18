@@ -33,6 +33,9 @@ public class DoublyLinkedList {
 		System.out.println("---------------------------");
 		doublyLinkedList.removeLastNode();
 		doublyLinkedList.printLinkedList();
+		System.out.println("---------------------------");
+		doublyLinkedList.reverse();
+		doublyLinkedList.printLinkedList();
 	}
 
 	public void add(String data) {
@@ -45,13 +48,13 @@ public class DoublyLinkedList {
 			return;
 		}
 		while (curr.getNext() != null) {
-			curr = curr.getNext();			
+			curr = curr.getNext();
 		}
 		DoublyNode node = new DoublyNode(data);
 		curr.setNext(node);
-		node.setPrev(curr.getPrev());
+		node.setPrev(curr);
 		node.setNext(null);
-		
+
 		this.listCount++;
 	}
 
@@ -84,10 +87,10 @@ public class DoublyLinkedList {
 			curr = curr.getNext();
 			count++;
 		}
-		DoublyNode node =new DoublyNode(data);
+		DoublyNode node = new DoublyNode(data);
 		prev.setNext(node);
 		node.setPrev(prev);
-		node.setNext(curr);		
+		node.setNext(curr);
 		this.listCount++;
 	}
 
@@ -164,7 +167,7 @@ public class DoublyLinkedList {
 			count++;
 		}
 		curr = null;
-		previous.setNext(null);	
+		previous.setNext(null);
 		this.listCount--;
 
 	}
@@ -176,4 +179,22 @@ public class DoublyLinkedList {
 			curr = curr.getNext();
 		}
 	}
+
+	public void reverse() {
+		DoublyNode temp = null;
+		DoublyNode current = head;
+		while (current != null) {
+			temp = current.prev;
+			current.prev = current.next;
+			current.next = temp;
+			current = current.prev;
+			//System.out.println(current.data);
+		}
+		if (temp != null) {
+			head = temp.prev;
+		}
+		
+	}
+	
+	
 }

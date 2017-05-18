@@ -24,8 +24,12 @@ public class SinglyLinkedList {
 		singlyLinkedList.add(new Node("1"));
 		singlyLinkedList.add(new Node("2"));
 		singlyLinkedList.add(new Node("3"));
-		singlyLinkedList.add(new Node("3"));
 		singlyLinkedList.add(new Node("4"));
+		singlyLinkedList.add(new Node("5"));
+		singlyLinkedList.add(new Node("6"));
+		singlyLinkedList.add(new Node("7"));
+		singlyLinkedList.add(new Node("8"));
+		singlyLinkedList.add(new Node("9"));
 		/*
 		 * singlyLinkedList.add(new Node("3")); singlyLinkedList.add(new
 		 * Node("4")); singlyLinkedList.add(new Node("5"));
@@ -47,14 +51,22 @@ public class SinglyLinkedList {
 		 */
 		System.out.println("---------------------------");
 		singlyLinkedList.printLinkedList();
-		singlyLinkedList.removeFromIndex(2);
+		// singlyLinkedList.removeFromIndex(2);
+		// System.out.println("---------------------------");
+		// singlyLinkedList.removeDuplicates();
+		/*
+		 * System.out.println("---------------------------");
+		 * singlyLinkedList.printLinkedList();
+		 * System.out.println("---------------------------");
+		 */
+		// singlyLinkedList.reverse();
+		// singlyLinkedList.printLinkedList();
+		// System.out.println("---------------------------");
 		System.out.println("---------------------------");
-		singlyLinkedList.removeDuplicates();
+		singlyLinkedList.reverseKnodes(singlyLinkedList.head, 3);
 		System.out.println("---------------------------");
 		singlyLinkedList.printLinkedList();
-		System.out.println("---------------------------");
-		singlyLinkedList.reverse();
-		singlyLinkedList.printLinkedList();
+
 	}
 
 	public void add(Node node) {
@@ -222,6 +234,63 @@ public class SinglyLinkedList {
 			}
 		}
 		return true;
+	}
+
+	public void deleteZeroSum() {
+		int count = 0;
+		int sum = 0;
+		Node curr = head;
+		for (int i = 0; i < listCount; i++) {
+			sum = sum + curr.dataNum;
+			count = count + 1;
+			if (sum == 0) {
+				for (int j = 0; j < count; j++) {
+					removeFromIndex(j);
+				}
+			}
+		}
+	}
+
+	public void addOne() {
+		Node root = reverseRecursive(head);
+		int carry = 0;
+		int num = 0;
+		Node curr = head;
+		for (int i = 0; i < listCount; i++) {
+			num = curr.dataNum + carry;
+			if (num >= 10) {
+				carry = num / 10;
+				curr.dataNum = num % 10;
+			}
+		}
+		if (carry > 0) {
+			Node node = new Node(null);
+			node.dataNum = carry;
+			add(node);
+		}
+		reverseRecursive(curr);
+	}
+
+	public Node reverseKnodes(Node head, int k) {
+		Node current = head;
+		Node next = null;
+		Node prev = null;
+
+		int count = 0;
+
+		while (count < k && current != null) {
+			next = current.next;
+			current.next = prev;
+			prev = current;
+			current = next;
+			count++;
+		}
+		if (next != null) {
+			head.next = reverseKnodes(next, k);
+		}
+		System.out.println(prev.data);
+		this.head = prev;
+		return prev;
 	}
 
 }

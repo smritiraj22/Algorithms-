@@ -7,6 +7,7 @@ public class Node {
 
     Node next;
     String data;
+    int dataNum;
 
     public Node(Node next, String data) {
         this.next = next;

@@ -1,4 +1,4 @@
-package com.smriti.alogorithms;
+package com.smriti.algorithms.trees;
 
 public class NodeHeight {
 

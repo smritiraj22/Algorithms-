@@ -1,4 +1,4 @@
-package com.smriti.alogorithms;
+package com.smriti.algorithms.trees;
 
 public class BinaryTree {
 	Node root;
@@ -75,4 +75,5 @@ public class BinaryTree {
 			this.name = name;
 		}
 	}
+
 }

@@ -1,4 +1,8 @@
-package com.smriti.alogorithms;
+package com.smriti.algorithms.trees;
+
+import java.util.Queue;
+import java.util.LinkedList;
+import java.util.Stack;
 
 public class BSTNodeDistance {
 	static Node root;
@@ -81,6 +85,7 @@ public class BSTNodeDistance {
 	static int maxDepth(NodeHeight node) {
 		int leftHeight = 0;
 		int rightHeight = 0;
+				
 		if (node == null)
 			return 0;
 		else {
